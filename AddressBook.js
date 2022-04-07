@@ -23,17 +23,22 @@ class Contact {
 }
 
 function addContactDetails(firstName, lastName, address, state, city, zipCode, email, phoneNumber) {
-
-    if (isFirstNameVaild(firstName) == true && isLastNameValid == true && isAddressValid == true && isStateValid == true && isCityValid == true &&
-        isZipCodeValid == true && isEmailValid == true && isPhoneNumberValid == true) {
-
-        let newContact = new Contact(firstName, lastName, address, state, city, zipCode, email, phoneNumber);
-        console.log("Contact Added Successfully");
-
-        addressBook.push(newContact);
-
+    addressBook.filter(contact => contact.firstName == firstName)
+    .reduce(() => count++, count = 0);
+    if (count > 0) {
+        console.log("Contact With Name " + firstName + " Already Present")
     } else {
-        throw 'Contact Details Are Invalid';
+        if (isFirstNameVaild(firstName) == true && isLastNameValid == true && isAddressValid == true && isStateValid == true && isCityValid == true &&
+            isZipCodeValid == true && isEmailValid == true && isPhoneNumberValid == true) {
+
+            let newContact = new Contact(firstName, lastName, address, state, city, zipCode, email, phoneNumber);
+            console.log("Contact Added Successfully");
+
+            addressBook.push(newContact);
+
+        } else {
+            throw 'Contact Details Are Invalid';
+        }
     }
 }
 function isFirstNameVaild(firstName){
