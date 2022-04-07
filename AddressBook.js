@@ -1,3 +1,5 @@
+var addressBook = new Array();
+
 class Contact {
     firstName
     lastName
@@ -20,7 +22,7 @@ class Contact {
     }
 }
 
-function contactDetails(firstName, lastName, address, state, city, zipCode, email, phoneNumber) {
+function addContactDetails(firstName, lastName, address, state, city, zipCode, email, phoneNumber) {
 
     const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
     let isFirstNameVaild = firstNamePattern.test(firstName);
@@ -57,5 +59,20 @@ function contactDetails(firstName, lastName, address, state, city, zipCode, emai
     } else {
         throw 'Contact Details Are Invalid';
     }
+
+
+    function useFunction(option) {
+        switch (option) {
+            case "addContactDetails":
+   
+                addContactDetails("Naveen", "Kumar", "NewRoadStreet", "XYZ", "TamilNadu", "626987", "contact@naveen.com", "9876543210");
+                addContactDetails("Hareesh", "Raj", "OldRoadStreet", "ZYX", "TamilNadu", "626145", "contact@hareesh.com", "9873216540");
+   
+                console.log(addressBook);
+                break;
+        }
+    }
+
+    useFunction("addContactDetails");
     
 }
