@@ -41,6 +41,7 @@ function addContactDetails(firstName, lastName, address, state, city, zipCode, e
         }
     }
 }
+
 function isFirstNameVaild(firstName){
     const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
     return firstNamePattern.test(firstName);
@@ -164,6 +165,22 @@ function countContacts() {
     console.log("\nTotal Contacts in Address Book are: " + count + "\n");
 }
 
+function searchByCityOrState(choice, name) {
+    if (choice == "city") {
+        person = addressBook.filter(contact => contact.city == name)
+            .map(contact => contact.firstName);
+        console.log("Contact Found From " + name);
+        console.log(person);
+    } else if (choice == "state") {
+        person = addressBook.filter(contact => contact.state == name)
+            .map(contact => contact.firstName);
+        console.log("Contact Found From " + name);
+        console.log(person);
+    } else {
+        console.log("Provide correct City or State Name");
+    }
+}
+
 function useFunction(option) {
     switch (option) {
         case "addContactDetails":
@@ -181,6 +198,9 @@ function useFunction(option) {
         case "countContacts":
             countContacts();
             break;
+        case "searchByCityOrState":
+            searchByCityOrState("state", "ZYXWV");
+            break;
     }
 }
 
@@ -188,4 +208,5 @@ useFunction("addContactDetails");
 useFunction("editContact");
 useFunction("deleteContact");
 useFunction("countContacts");
+useFunction("searchByCityOrState");
     
