@@ -78,7 +78,7 @@ function addContactDetails(firstName, lastName, address, state, city, zipCode, e
 
     function editContact(firstName, changingField, newValue) {
         if (addressBook.length == null) {
-            console.log("Add Contact In Address Book");
+            console.log("Address Book Empty");
         } else {
             addressBook.forEach(newContact => {
                 if (newContact.firstName == firstName) {
@@ -139,24 +139,38 @@ function addContactDetails(firstName, lastName, address, state, city, zipCode, e
         }
     }
 
+    function deleteContact(first_Name) {
+        if (addressBook.length == null) {
+            console.log("Address Book Empty");
+        } else {
+            for (let i = 0; i < addressBook.length; i++) {
+                if (addressBook[i].firstName == first_Name) {
+                    addressBook.splice(i, 1);
+                    console.log("Contact Deleted Successfully");
+                }
+            }
+        }
+    }
+
     function useFunction(option) {
         switch (option) {
             case "addContactDetails":
-   
                 addContactDetails("Naveen", "Kumar", "NewRoadStreet", "VWXYZ", "TamilNadu", "626987", "contact@naveen.com", "9876543210");
                 addContactDetails("Hareesh", "Raj", "OldRoadStreet", "ZYXWV", "TamilNadu", "626145", "contact@hareesh.com", "9873216540");
-   
-                console.log(addressBook);
                 break;
 
             case "editContact":
                 editContact("Naveen", "city", "ABCDE");
-                console.log(addressBook);
+                break;
+
+            case "deleteContact":
+                deleteContact("Hareesh");
                 break;
         }
     }
 
     useFunction("addContactDetails");
     useFunction("editContact");
+    useFunction("deleteContact");
     
 }
